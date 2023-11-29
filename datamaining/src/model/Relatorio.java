@@ -1,12 +1,13 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Relatorio {
     Analisador alanalisador;
     ArrayList<Itens> itens = new ArrayList<Itens>();
     ArrayList<Condicao> resultados;
-    ArrayList<Condicao> destaques;
+    ArrayList<Condicao> destaques = new ArrayList<Condicao>();
 
     public Relatorio(Analisador alanalisador) {
         this.alanalisador = alanalisador;
@@ -39,6 +40,7 @@ public class Relatorio {
         }
         this.resultados = resultados;
         exibeResultadosEmOrdem();
+        exibeDestaques();
     }
 
     public void calculoDeConfiaca(Itens itemX, Itens itemY, Condicao condicaoEmFuncaoDeX,
@@ -63,11 +65,12 @@ public class Relatorio {
     }
 
     public void exibeDestaques() {
-        System.out.println("Destaques");
-        for (int i = 0; i < resultados.size(); i++) {
+        System.out.println("Destaques\n");
+        Collections.sort(this.destaques);
+        for (int i = 0; i < destaques.size(); i++) {
             System.out.println(destaques.get(i).toString());
         }
-        System.out.println("Fim dos Destaques");
+        System.out.println("Fim dos Destaques\n");
     }
 
 }

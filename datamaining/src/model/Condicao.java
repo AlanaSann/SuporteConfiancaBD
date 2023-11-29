@@ -1,6 +1,6 @@
 package model;
 
-public class Condicao {
+public class Condicao implements Comparable<Condicao> {
 
     private final Itens itemX;
     private final Itens itemY;
@@ -44,6 +44,11 @@ public class Condicao {
     public String toString() {
         return "Condicao itemX=" + itemX + ", itemY=" + itemY + ", suporte=" + suporte + ", confianca="
                 + stringDeRespostaDeConfianca();
+    }
+
+    @Override
+    public int compareTo(Condicao outraCondicao) {
+        return Double.compare(outraCondicao.confianca, this.confianca);
     }
 
 }
